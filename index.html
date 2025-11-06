@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.E.S.T. N° 1 de Grand Bourg</title>
+    <style>
+
+        :root {
+            --azul-francia: #005A9C;
+            --azul-oscuro: #003366;
+            --blanco: #FFFFFF;
+            --gris-claro: #F4F4F9;
+            --gris-texto: #333333;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+    body {
+        line-height: 1.6;
+
+        background-color: var(--gris-claro);
+        color: var(--gris-texto);
+    }
+
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+
+        header {
+
+            background-image: url('cole.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Azul Oscuro semi-transparente */
+            background-color: rgba(0, 51, 102, 0.75);
+            z-index: 1;
+        }
+
+        header .content {
+            position: relative;
+            z-index: 2;
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: var(--azul-francia);
+            padding: 0.75rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--azul-oscuro);
+            transform: translateY(-2px);
+        }
+
+
+        main {
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: var(--blanco);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--azul-francia);
+        }
+
+        section h2 {
+            color: var(--azul-francia);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gris-claro);
+            padding-bottom: 0.5rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            background-color: var(--gris-claro);
+            color: var(--azul-oscuro);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            flex: 1 1 calc(50% - 15px);
+            min-width: 250px;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background-color: #DDEEFF;
+        }
+
+
+        footer {
+            background: linear-gradient(90deg, #003366, #005A9C);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.95rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            main {
+                padding: 2rem 3%;
+            }
+
+            .feature-list li {
+                flex: 1 1 100%;
+            }
+        }
+
+
+
+        .accordion-container {
+            margin-top: 2rem;
+        }
+
+        .accordion-header {
+            display: block;
+            background-color: var(--azul-francia);
+            color: var(--blanco);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-header:hover {
+            background-color: var(--azul-oscuro);
+        }
+
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+
+        .accordion-content {
+            background-color: var(--gris-claro);
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .accordion-content ul {
+            padding-left: 20px;
+        }
+
+        .accordion-content h4 {
+            color: var(--azul-oscuro);
+            margin-top: 15px;
+        }
+
+        .accordion-toggle:checked + .accordion-header + .accordion-content {
+            max-height: 800px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+
+        .accordion-header::after {
+            content: '+';
+            float: right;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        .accordion-toggle:checked + .accordion-header::after {
+            content: '-';
+            transform: rotate(360deg);
+        }
+
+
+        .cta-box {
+            background-color: #e0f7fa;
+            border: 2px solid var(--azul-francia);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px 0;
+            justify-content: center;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 5px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+
+        @media (max-width: 600px) {
+            .gallery-grid img {
+                max-width: 100%;
+            }
+        }
+        .boton-redireccion{
+          background-color:blue;
+          border:none;
+          color:white;
+          padding: 15px 32px;
+          text-decoration: none;
+          font-size: 1.4rem;
+          border-radius: 12px;
+          font-family: sans-serif;
+
+
+        }
+
+
+header {
+    background-image: url('cole.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    animation: fondoMovimiento 25s ease infinite;
+}
+
+@keyframes fondoMovimiento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 51, 102, 0.75);
+    z-index: 1;
+}
+
+header .content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    animation: aparecer 2s ease forwards;
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: tituloBrillo 3s ease-in-out infinite alternate;
+}
+
+@keyframes tituloBrillo {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    to { text-shadow: 0 0 25px rgba(255,255,255,0.9); }
+}
+
+header p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.boton-empezar {
+    background-color: #005A9C;
+    border: none;
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    font-size: 1.3rem;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.boton-empezar:hover {
+    background-color: #003366;
+    transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+    header h1 { font-size: 2.2rem; }
+    header p { font-size: 1.1rem; }
+}
+
+    </style>
+</head>
+<body>
+
+
+  <header>
+<div class="hero-overlay"></div>
+<div class="content">
+  <h1>Escuela Técnica N°1</h1>
+  <p>Grand Bourg | Formando profesionales con excelencia e innovación.</p>
+  <a href="#institucional" class="boton-empezar">Empezar</a>
+</div>
+</header>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#institucional">Institucional</a></li>
+            <li><a href="#oferta-academica">Especialidades</a></li>
+            <li><a href="#instalaciones">Infraestructura</a></li>
+            <li><a href="#admisiones">Admisiones</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="institucional">
+            <h2>Nuestra Misión y Enfoque </h2>
+            <p>La E.E.S.T. N° 1 de Grand Bourg tiene como pilar la educación para el trabajo y la vida, formando ciudadanos críticos, éticos y, sobre todo, técnicos competentes para los desafíos del siglo XXI. Con una matrícula superior a los 750 alumnos, operamos en tres turnos para garantizar el acceso a una formación de alta calidad.</p>
+            <p>Nuestra metodología se basa en el Aprendizaje Basado en Proyectos (ABP), fomentando la innovación práctica. Un ejemplo de este éxito es el proyecto SICONAC, un software desarrollado por nuestros alumnos que ganó un concurso en la Feria Nacional de Educación, demostrando la capacidad de nuestros estudiantes para crear soluciones reales.</p>
+        </section>
+
+        <section id="oferta-academica">
+            <h2>Especialidades y Ciclos Formativos ⚙</h2>
+            <p>Ofrecemos una estructura educativa completa. Haz clic en cada ciclo o especialidad para ver el detalle de las materias y talleres correspondientes a cada año.</p>
+
+            <div class="accordion-container">
+
+                <input type="checkbox" id="acordeon1" class="accordion-toggle" hidden>
+                <label for="acordeon1" class="accordion-header">
+                    <h3>Ciclo Básico (1° a 3° Año)</h3>
+                </label>
+                <div class="accordion-content">
+                    <p>El ciclo básico tiene un enfoque común y exploratorio. Los talleres están diseñados para que los estudiantes roten por diferentes áreas (Sistemas Tecnológicos, Procedimientos Técnicos y Lenguajes Tecnológicos) antes de elegir una especialidad en el ciclo superior.</p>
+
+                    <h4>Materias de 1° Año</h4>
+                    <ul>
+                        <li>Ciencias Naturales: Biología, Física y Química con enfoque energético.</li>
+                        <li>Ciencias Sociales: Contexto socioproductivo e impacto tecnológico.</li>
+                        <li>Matemática: Consolidación de conceptos y resolución de problemas tecnológicos.</li>
+                        <li>PD Lenguaje: Desarrollo de la comunicación eficaz.</li>
+                        <li>Construcción de la ciudadanía: Formación en ética y compromiso social.</li>
+                        <li>Educación artística e Inglés.</li>
+                    </ul>
+
+                    <h4>Talleres del Ciclo Básico</h4>
+                    <ul>
+                        <li>Procedimientos Técnicos: Trabajo de banco (limado, taladrado), mediciones (calibre) y normas de seguridad e higiene.</li>
+                        <li>Lenguaje Tecnológico: Dibujo Técnico, interpretación de planos y croquis.</li>
+                        <li>Sistemas Tecnológicos: Análisis de máquinas, materiales y fuentes de energía.</li>
+                    </ul>
+                </div>
+
+                <input type="checkbox" id="acordeon2" class="accordion-toggle" hidden>
+                <label for="acordeon2" class="accordion-header">
+                    <h3>Especialidad: Informática - 4to Año</h3>
+                </label>
+                <div class="accordion-content">
+                    <h4>Materias de Aula</h4>
+                    <ul>
+                        <li>Matemática, Historia, Geografía, Física, Química, Inglés, Literatura, Tecnologías Electrónicas, Salud y Adolescencia.</li>
+                    </ul>
+                    <h4>Talleres Específicos</h4>
+                    <ul>
+                        <li>Laboratorio de Hardware</li>
+                        <li>Laboratorio de Sistemas Operativos</li>
+                        <li>Laboratorio de Aplicaciones</li>
+                        <li>Laboratorio de Programación</li>
+                    </ul>
+                </div>
+
+                <input type="checkbox" id="acordeon3" class="accordion-toggle" hidden>
+                <label for="acordeon3" class="accordion-header">
+                    <h3>Especialidad: Informática - 5to Año</h3>
+                </label>
+                <div class="accordion-content">
+                    <h4>Materias de Aula</h4>
+                    <ul>
+                        <li>Análisis Matemático, Historia, Geografía, Sistemas Digitales, Teleinformática, Política y Ciudadanía.</li>
+                    </ul>
+                    <h4>Talleres Específicos</h4>
+                    <ul>
+                        <li>Laboratorio de Hardware (continuación)</li>
+                        <li>Laboratorio de Sistemas Operativos (continuación)</li>
+                        <li>Laboratorio de Aplicaciones (continuación)</li>
+                        <li>Laboratorio de Programación (continuación)</li>
+                    </ul>
+                </div>
+
+                <input type="checkbox" id="acordeon4" class="accordion-toggle" hidden>
+                <label for="acordeon4" class="accordion-header">
+                    <h3>Especialidad: Informática - 6to Año</h3>
+                </label>
+                <div class="accordion-content">
+                    <h4>Materias de Aula</h4>
+                    <ul>
+                        <li>Matemática Aplicada, Sistemas Digitales, Filosofía, Investigación Operativa, Derecho del Trabajo, Seguridad Informática.</li>
+                    </ul>
+                    <h4>Talleres Específicos</h4>
+                    <ul>
+                        <li>Laboratorio de Hardware (Proyecto final)</li>
+                        <li>Laboratorio de Sistemas Operativos (Proyecto final)</li>
+                        <li>Laboratorio de Aplicaciones (Proyecto final)</li>
+                        <li>Laboratorio de Programación (Proyecto final)</li>
+                    </ul>
+                </div>
+
+                <input type="checkbox" id="acordeon5" class="accordion-toggle" hidden>
+                <label for="acordeon5" class="accordion-header">
+                    <h3>Especialidad: Electrónica - 4to Año</h3>
+                </label>
+                <div class="accordion-content">
+                    <h4>Materias de Aula</h4>
+                    <ul>
+                        <li>Física, Química, Tecnologías Electrónicas, Fundamentos de los modelos circuitales, Literatura, Salud y Adolescencia.</li>
+                    </ul>
+                    <h4>Talleres Específicos</h4>
+                    <ul>
+                        <li>Aplicaciones de Electrónica Analógica</li>
+                        <li>Aplicaciones de Electrónica Digital</li>
+                        <li>Montaje de Proyectos Electrónicos</li>
+                    </ul>
+                </div>
+
+                <input type="checkbox" id="acordeon6" class="accordion-toggle" hidden>
+                <label for="acordeon6" class="accordion-header">
+                    <h3>Especialidad: Electrónica - 5to Año</h3>
+                </label>
+                <div class="accordion-content">
+                    <h4>Materias de Aula</h4>
+                    <ul>
+                        <li>Análisis Matemático, Análisis de modelos circuitales, Lenguajes Electrónicos, Historia, Política.</li>
+                    </ul>
+                    <h4>Talleres Específicos</h4>
+                    <ul>
+                        <li>Lenguajes Electrónicos (Taller)</li>
+                        <li>Aplicaciones de Electrónica Analógica (continuación)</li>
+                        <li>Aplicaciones de Electrónica Digital (continuación)</li>
+                        <li>Montaje de Proyectos Electrónicos (continuación)</li>
+                    </ul>
+                </div>
+
+                <input type="checkbox" id="acordeon7" class="accordion-toggle" hidden>
+                <label for="acordeon7" class="accordion-header">
+                    <h3>Especialidad: Electrónica - 6to Año</h3>
+                </label>
+                <div class="accordion-content">
+                    <h4>Materias de Aula</h4>
+                    <ul>
+                        <li>Matemática Aplicada, Sistemas de Comunicaciones, Inst. y Maq. Electrónicos, Sistemas Productivos, Derecho del Trabajo.</li>
+                    </ul>
+                    <h4>Talleres Específicos</h4>
+                    <ul>
+                        <li>Lenguajes Electrónicos (Taller)</li>
+                        <li>Aplicaciones de Electrónica Analógica (Proyecto final)</li>
+                        <li>Aplicaciones de Electrónica Digital (Proyecto final)</li>
+                        <li>Montaje de Proyectos Electrónicos (Proyecto final)</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="instalaciones">
+      <h2>Infraestructura Técnica y Deportiva </h2>
+      <p>Nuestras instalaciones están pensadas para ser un espacio seguro, moderno y funcional. Haz clic para explorar las áreas clave.</p>
+
+      <div class="accordion-container">
+
+          <input type="checkbox" id="infra1" class="accordion-toggle" hidden>
+          <label for="infra1" class="accordion-header">
+              <h3>Talleres y Laboratorios Equipados</h3>
+          </label>
+          <div class="accordion-content">
+              <p>Espacios dedicados a la práctica técnica en Informática, Electrónica y talleres de ciclo basico. ¡aca se construye el futuro!</p>
+              <div class="gallery-grid">
+                  <img src="img/taller.jpg" alt="Laboratorio de Hardware">
+                  <img src="img/taller2.jpg" alt="Taller de Mecanizado">
+                  <img src="img/taller3.jpg" alt="Laboratorio de Electrónica">
+                  <img src="img/taller4.jpg" alt="Laboratorio de Electrónica">
+                  <img src="img/taller5.jpg" alt="Laboratorio de Electrónica">
+              </div>
+          </div>
+
+          <input type="checkbox" id="infra2" class="accordion-toggle" hidden>
+          <label for="infra2" class="accordion-header">
+              <h3>Edificio, Seguridad y Aulas</h3>
+          </label>
+          <div class="accordion-content">
+              <p>seguridad del colegio</p>
+              <div class="gallery-grid">
+                  <img src="img/matafuego.jpg" alt="Fachada de la escuela">
+                  <img src="img/botiquin.jpg" alt="Aula ampliada y equipada">
+                    <img src="img/aulanueva.jpg" alt="Aula ampliada y equipada">
+                    <img src="img/ccole.jpg" alt="Aula ampliada y equipada">
+                    <img src="img/cole.jpg" alt="Aula ampliada y equipada">
+
+
+              </div>
+          </div>
+
+          <input type="checkbox" id="infra3" class="accordion-toggle" hidden>
+          <label for="infra3" class="accordion-header">
+              <h3>Playón Deportivo y Recursos Digitales</h3>
+          </label>
+          <div class="accordion-content">
+              <p>Fomentamos la actividad física en nuestro Playón Deportivo y facilitamos el acceso a la información en la Biblioteca y el pañol que es donde los alumnos tienen acceso a las herramientas para realizar sus trabajos..</p>
+              <div class="gallery-grid">
+                  <img src="img/patio.jpg" alt="Playón Deportivo">
+                  <img src="img/biblioteca2.jpg" alt="Biblioteca">
+                    <img src="img/biblioteca4.jpg" alt="Biblioteca">
+                      <img src="img/pañol1.jpg" alt="Biblioteca">
+                        <img src="img/pañol2.jpg" alt="Biblioteca">
+                          <img src="img/pañol3.jpg" alt="Biblioteca">
+                            <img src="img/pañol4.jpg" alt="Biblioteca">
+                              <img src="img/pañol6.jpg" alt="Biblioteca">
+              </div>
+          </div>
+
+      </div>
+  </section>
+  <section id="expotecnica">
+      <h2>ExpoTécnica </h2>
+      <p>La ExpoTécnica es un evento anual donde los estudiantes de la Escuela Técnica N°1 presentan los proyectos que desarrollaron durante el año. Este espacio busca mostrar el trabajo, la creatividad y las habilidades técnicas adquiridas en los talleres, fomentando la innovación y el aprendizaje colaborativo. Además, es una oportunidad para que la comunidad conozca cómo se forma a los futuros técnicos de nuestra institución.</p>
+  <a href="ggleria.html" class="boton-redireccion">ver galeria de fotos</a>
+
+
+  </section>
+        <section id="admisiones">
+            <h2>Proceso de Incorporación </h2>
+            <p>Como escuela de gestión pública, el proceso de admisión se ajusta a las normativas de la Provincia de Buenos Aires. Se invita a las familias interesadas a solicitar información sobre los requisitos y el cronograma de inscripción.</p>
+
+            <div class="cta-box">
+                <p><strong>¡No pierdas tu lugar!</strong></p>
+                <p>Recomendamos contactar a la Secretaría para obtener las fechas exactas y documentación necesaria para el inicio del Ciclo Básico.</p>
+                <a href="#contacto" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: var(--azul-francia); color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Contactar a Secretaría</a>
+            </div>
+        </section>
+
+
+
+        <section id="contacto">
+            <h2>Contacto y Ubicación </h2>
+            <p>E.E.S.T. N° 1 de Grand Bourg</p>
+            <p><strong>Dirección:</strong> Batalla de Chacabuco 276, Grand Bourg, Argentina</p>
+            <p><strong>Teléfono:</strong> 02320 48-0129</p>
+            <p><strong>Email:</strong> infotecnica1@tec1gralsanmartin.com</p>
+            <p>Para consultas específicas de horarios o documentación, recomendamos llamar a la Secretaría en el turno mañana.</p>
+            <h2>Ubicación de la escuela</h2>
+    <iframe
+      src=https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.0897818614585!2d-58.72326362697165!3d-34.500608072991376!2m3!1f0!2f0!3f0!3m2!1i124!2i768!4f13.1!3m3!1m2!1s0x95bca2bbe868aaf5%3A0x92b518fb0e151bb8!2sBatalla%20de%20Chacabuco%20276%2C%20B1615%20Grand%20Bourg%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1762399278873!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+
+    </iframe>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 E.E.S.T. N° 1 de Grand Bourg. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#contacto">Contáctenos</a></p>
+    </footer>
+
+</body>
+</html>
